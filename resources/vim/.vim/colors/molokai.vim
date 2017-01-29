@@ -4,7 +4,7 @@
 " https://github.com/tomasr/molokai
 "
 " monokai theme copyright Wimer Hazenberg.
-" 
+"
 " molokai.vim source code is licensed as follows:
 "
 " The MIT License (MIT)

@@ -23,13 +23,13 @@ def setup_blender_builds():
     ]
 
     for command in commands:
-        bashcall(command, shell=True);
+        bashcall(command);
 
 def setup_bash():
-    bashcall("ln -s $CUSTOMCONFIG/resources/bash_aliases ~/.bash_aliases", shell=True)
+    bashcall("ln -s $CUSTOMCONFIG/resources/bash_aliases ~/.bash_aliases")
 
 def setup_vim():
-    bashcall("ln -s $CUSTOMCONFIG/vim/vimrc ~/.vimrc && ln -s $CUSTOMCONFIG/vim/.vim/ ~/.vim", shell=True)
+    bashcall("ln -s $CUSTOMCONFIG/resources/vim/vimrc ~/.vimrc && ln -s $CUSTOMCONFIG/resources/vim/.vim/ ~/.vim")
 
 def main():
     customconfig_path = os.path.dirname(os.path.realpath(__file__))
