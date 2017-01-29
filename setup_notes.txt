@@ -1,0 +1,11 @@
+This File contains some notes - mainly for myself - for setting up various things in my system.
+
+Compiling GCC
+==============
+
+* Directory structure:
+** /opt/lib/gcc/src - GCC Git repository clone (git://gcc.gnu.org/git/gcc.git). Use a release checkout (e.g. "git checkout gcc-6_3_0-release")!
+** /opt/lib/gcc/objdir - Compiled sources
+** /opt/lib/gcc/objdir/build - The installation files (binaries, libs, headers, etc)
+* Configure with (from objdir): "../src/configure --enable-languages=c,c++ --disable-multilib --prefix=/opt/lib/gcc/objdir/build/"
+* Add to .bashrc: "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib/gcc/objdir/build/lib64/"

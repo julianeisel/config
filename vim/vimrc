@@ -1,0 +1,17 @@
+" Based on http://vim.wikia.com/wiki/Change_cursor_shape_in_different_modes, licensed under CC-BY-SA (https://creativecommons.org/licenses/by-nc/3.0/legalcode)
+if has("autocmd")
+    au InsertEnter *
+        \ if v:insertmode == 'i' |
+        \   silent execute "!$CUSTOMCONFIG/resources/gnome-terminal-cursor-shape.py ibeam" |
+        \ elseif v:insertmode == 'r' |
+        \   silent execute "!$CUSTOMCONFIG/resources/gnome-terminal-cursor-shape.py underline" |
+        \ endif
+    au InsertLeave * silent execute "!$CUSTOMCONFIG/resources/gnome-terminal-cursor-shape.py block"
+    au VimLeave * silent execute "!$CUSTOMCONFIG/resources/gnome-terminal-cursor-shape.py block"
+endif
+
+filetype on
+syntax on
+colorscheme molokai
+
+inoremap jk <esc>

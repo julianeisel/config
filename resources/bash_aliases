@@ -1,0 +1,93 @@
+# ****** Blender ******
+
+blender_run()
+{
+	if (( $# == 0)); then
+		# Use default "blender" build if no build name argument is provided
+		"$HOME/blender/software/blender/build/bin/blender"
+	elif [[ $1 == "." ]]; then
+		# For use when in build root directory already (e.g. blender/software/master/)
+		"./build/bin/blender"
+	else
+		# First argument is build name
+		"$HOME/blender/software/$1/build/bin/blender"
+	fi
+}
+
+blender_cd_buildroot()
+{
+	if (( $# == 0)); then
+		# Use default "blender" build if no build name argument is provided
+		cd "$HOME/blender/software/blender"
+	else
+		# First argument is build name
+		cd "$HOME/blender/software/$1"
+	fi
+}
+
+blender_cd_build()
+{
+	if (( $# == 0)); then
+		# Use default "blender" build if no build name argument is provided
+		cd "$HOME/blender/software/blender/build"
+	else
+		# First argument is build name
+		cd "$HOME/blender/software/$1/build"
+	fi
+}
+
+blender_cd_scripts()
+{
+	if (( $# == 0)); then
+		# Use default "blender" build if no build name argument is provided
+		cd "$HOME/blender/software/blender/build/bin/release/scripts"
+	elif [[ $1 == "." ]]; then
+		# For use when in build root directory already (e.g. blender/software/master/)
+		cd "./build/bin/release/scripts"
+	else
+		# First argument is build name
+		cd "$HOME/blender/software/$1/build/bin/release/scripts"
+	fi
+}
+
+# "b" runs default Blender build, "b ." runs build from current build root directory, "b foo" runs "foo" build
+alias b=blender_run
+alias cds="cd \"$HOME/blender/software/\""
+# "b" changes into root directory of default build ("blender"), "b foo" changes into root directory of "foo" build.
+alias cdb=blender_cd_buildroot
+# "cdbu" changes into build directory of default build ("blender"), "cdbu foo" changes into build directory of "foo" build.
+alias cdbu=blender_cd_build
+# "cdscr" changes into script directory of default build ("blender"), "cdscr foo" changes into script directory of "foo" build.
+alias cdsc=blender_cd_scripts
+
+# fancy ideasman42 aliases
+# Open last added .blend in ~/Downloads
+alias bbug='b `ls -1 \"$HOME/Downloads/*.blend\" -tr | tail -n 1`'
+# Apply last added .diff in ~/blender/diffs
+alias bpatch='git apply `ls -1 \"$HOME/blender/diffs/*.diff\" -tr | tail -n 1`'
+
+
+# ****** Make ******
+
+alias m="make -j`nproc`"
+# alias mi="make install -j`nproc`" # Don't need to run make install, runtime files are linked from source directory to build directory.
+
+
+# ****** Git ******
+
+alias gpull="git pull --rebase && git submodule foreach git pull --rebase origin master"
+alias gc="git commit -a"
+alias gco="git checkout"
+# __git_complete gco _git_checkout # git auto-complete, requires git-completion.bash being available
+# Resets current branch to remote state (hard reset)
+alias grhard='git reset --hard origin/`git rev-parse --abbrev-ref HEAD`'
+alias gs="git status"
+alias gshow="git show HEAD"
+alias gdi="git diff"
+alias gdel="find . -name '*.orig' -delete && find . -name '*.rej' -delete && find . -name '*.BACKUP.*.c' -delete && find . -name '*.BASE.*.c' -delete && find . -name '*.LOCAL.*.c' -delete && find . -name '*.REMOTE.*.c' -delete"
+alias ga="git apply"
+
+
+# ****** Misc ******
+
+# alias pa="patch -p1 <"
