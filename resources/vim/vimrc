@@ -11,8 +11,52 @@ if has("autocmd")
 endif
 
 filetype on
-syntax on
-colorscheme molokai
+colorscheme monokai
 
 inoremap jk <esc>
 
+
+" --- Extra Visual Info ---
+syn on                      " Syntax highlighting
+" :set spell                   " spell checking (if you like)
+set showmatch                " When a bracket is inserted, briefly jump to a matching one
+set incsearch                " Incremental search
+" Whitespace
+" set listchars=tab:⟶\ , trail:·
+set listchars=tab:⟶/,trail:·
+set list
+
+
+" --- Tab settings ---
+set tabstop=4
+set shiftwidth=4
+" Expand tabs for Python coding only (C/C++ in blender uses tabs)
+" set expandtab
+set smarttab
+
+
+" ---- indenting ----
+set autoindent " auto indent
+set smartindent " smart indent
+set ci " C/C++ indents
+set cin " -
+
+
+" --- Column/Row Stuff ---
+set cul                      " Highlight the current line
+set number                  " Show Line Numbers
+set lines=40 columns=120    " Window Size
+set colorcolumn=120         " Right Margin
+
+
+set scrolloff=3              " Scroll when cursor gets within 3 characters of top/bottom edge
+
+
+" --- Extra Functionality Helpers ---
+set autochdir                " cd into buffer editing
+
+filetype plugin on
+filetype indent on           " Indent
+
+" auto-complete
+set ofu=syntaxcomplete#Complete
