@@ -18,12 +18,11 @@ inoremap jk <esc>
 
 " --- Extra Visual Info ---
 syn on                      " Syntax highlighting
-" :set spell                   " spell checking (if you like)
+" set spell                   " spell checking (if you like)
 set showmatch                " When a bracket is inserted, briefly jump to a matching one
 set incsearch                " Incremental search
 " Whitespace
-" set listchars=tab:⟶\ , trail:·
-set listchars=tab:⟶/,trail:·
+set listchars=tab:⟶\ ,trail:·
 set list
 
 

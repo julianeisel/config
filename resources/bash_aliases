@@ -2,7 +2,7 @@
 
 blender_run()
 {
-	if (( $# == 0)); then
+	if (( $# == 0 )); then
 		# Use default "blender" build if no build name argument is provided
 		"$HOME/blender/software/blender/build/bin/blender"
 	elif [[ $1 == "." ]]; then
@@ -16,7 +16,7 @@ blender_run()
 
 blender_cd_buildroot()
 {
-	if (( $# == 0)); then
+	if (( $# == 0 )); then
 		# Use default "blender" build if no build name argument is provided
 		cd "$HOME/blender/software/blender"
 	else
@@ -27,7 +27,7 @@ blender_cd_buildroot()
 
 blender_cd_build()
 {
-	if (( $# == 0)); then
+	if (( $# == 0 )); then
 		# Use default "blender" build if no build name argument is provided
 		cd "$HOME/blender/software/blender/build"
 	else
@@ -36,9 +36,20 @@ blender_cd_build()
 	fi
 }
 
+blender_cd_source()
+{
+	if (( $# == 0 )); then
+		# Use default "blender" build if no build name argument is provided
+		cd "$HOME/blender/software/blender/src"
+	else
+		# First argument is build name
+		cd "$HOME/blender/software/$1/src"
+	fi
+}
+
 blender_cd_scripts()
 {
-	if (( $# == 0)); then
+	if (( $# == 0 )); then
 		# Use default "blender" build if no build name argument is provided
 		cd "$HOME/blender/software/blender/build/bin/release/scripts"
 	elif [[ $1 == "." ]]; then
@@ -57,6 +68,8 @@ alias cds="cd \"$HOME/blender/software/\""
 alias cdb=blender_cd_buildroot
 # "cdbu" changes into build directory of default build ("blender"), "cdbu foo" changes into build directory of "foo" build.
 alias cdbu=blender_cd_build
+# "cdbl" changes into source directory of default build ("blender"), "cdbl foo" changes into source directory of "foo" build.
+alias cdbl=blender_cd_source
 # "cdscr" changes into script directory of default build ("blender"), "cdscr foo" changes into script directory of "foo" build.
 alias cdsc=blender_cd_scripts
 
