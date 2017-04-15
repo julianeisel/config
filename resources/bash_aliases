@@ -6,8 +6,8 @@ blender_run()
 		# Use default "blender" build if no build name argument is provided
 		"$HOME/blender/software/blender/build/bin/blender"
 	elif [[ $1 == "." ]]; then
-		# For use when in build root directory already (e.g. blender/software/master/)
-		"./build/bin/blender"
+		# For use when in build directory already (e.g. blender/software/master/build)
+		"./bin/blender"
 	else
 		# First argument is build name
 		"$HOME/blender/software/$1/build/bin/blender"
