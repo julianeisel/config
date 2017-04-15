@@ -13,7 +13,11 @@ endif
 filetype on
 colorscheme monokai
 
-inoremap jk <esc>
+inoremap jk <esc>   " use 'jk' to exit insert mode
+set iskeyword-=_
+
+" Search for selected text using '//'
+vnoremap // y/<C-R>"<CR>
 
 
 " --- Extra Visual Info ---
